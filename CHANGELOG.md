@@ -1,5 +1,16 @@
 # Changelog
 
+## [v1.2.0] - 2021-10-05
+
+### New:
+
+- Example usage of the logger available [here](example/main.go).
+
+### Changed:
+
+- Change prefix order, so that log level tag comes directly before the message.
+
+
 ## [v1.1.0] - 2021-10-05
 
 ### New:

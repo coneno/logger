@@ -9,6 +9,13 @@ TODO: add some code examples how to use the package
 ## Tests
 
 To perform the unit tests, you can call from the root folder:
-```
+
+```go
 go test
+```
+
+To run the example:
+
+```go
+go run example/main.go
 ```

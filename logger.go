@@ -67,7 +67,7 @@ func getLogger(prefix string, error bool) *log.Logger {
 		writer = os.Stdout
 	}
 
-	return log.New(writer, fmt.Sprintf("[%s]\t- ", prefix), log.Ldate|log.Ltime|log.Lshortfile)
+	return log.New(writer, fmt.Sprintf("[%s]: ", prefix), log.Ldate|log.Ltime|log.Lshortfile|log.Lmsgprefix)
 }
 
 func getEmptyLogger() *log.Logger {

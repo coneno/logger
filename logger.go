@@ -10,30 +10,44 @@ import (
 type LogLevel int
 
 const (
-	LEVEL_INFO LogLevel = iota
+	LEVEL_ERROR LogLevel = iota
+	LEVEL_WARNING
+	LEVEL_INFO
 	LEVEL_DEBUG
-	LEVEL_ERROR
 )
 
+var Error = getErrorLogger()
+var Warning = getWarningLogger()
 var Info = getInfoLogger()
 var Debug = getDebugLogger()
-var Error = getErrorLogger()
 
 func SetLevel(level LogLevel) {
+	Error = getErrorLogger()
+	Warning = getWarningLogger()
+	Info = getInfoLogger()
+	Debug = getDebugLogger()
+
 	switch level {
-	case LEVEL_INFO:
-		Info = getInfoLogger()
-		Debug = getDebugLogger()
-		Error = getErrorLogger()
-	case LEVEL_DEBUG:
-		Info = getEmptyLogger()
-		Debug = getDebugLogger()
-		Error = getErrorLogger()
 	case LEVEL_ERROR:
+		Warning = getEmptyLogger()
 		Info = getEmptyLogger()
 		Debug = getEmptyLogger()
-		Error = getErrorLogger()
+	case LEVEL_WARNING:
+		Info = getEmptyLogger()
+		Debug = getEmptyLogger()
+	case LEVEL_INFO:
+		Debug = getEmptyLogger()
+	case LEVEL_DEBUG:
+		return
 	}
+}
+
+func getErrorLogger() *log.Logger {
+	return getLogger("ERROR", true)
+}
+
+func getWarningLogger() *log.Logger {
+	return getLogger("WARNING", true)
 }
 
 func getInfoLogger() *log.Logger {
@@ -42,10 +56,6 @@ func getInfoLogger() *log.Logger {
 
 func getDebugLogger() *log.Logger {
 	return getLogger("DEBUG", false)
-}
-
-func getErrorLogger() *log.Logger {
-	return getLogger("ERROR", true)
 }
 
 func getLogger(prefix string, error bool) *log.Logger {

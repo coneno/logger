@@ -1,3 +1,9 @@
+//Package logger implements logging methods with formatted output
+//and more detailed logging information than provided in the standard
+//logging package of golang. It is possible to specify the level of
+//logging information to be written as output (Default: all information is written).
+//Use the `*log.Logger` variables and chain them to common I/O writers
+// for printing logging information.
 package logger
 
 import (
@@ -7,8 +13,19 @@ import (
 	"os"
 )
 
+//LogLevel indicates the level of logging information passed as
+//argument to SetLevel function.
 type LogLevel int
 
+//There are four possible values for type `LogLevel`:
+//
+// 1. `LEVEL_ERROR`: Only Error logs are written to `stderr`.
+//
+// 2. `LEVEL_WARNING`: Warnings and errors are written to `stderr`.
+//
+// 3. `LEVEL_INFO`:    Errors and warnings are written to `stderr`, infos to `stdout`.
+//
+// 4. `LEVEL_DEBUG`:   Errors and warnings are written to `stderr`, infos and debugs to `stdout`.
 const (
 	LEVEL_ERROR LogLevel = iota
 	LEVEL_WARNING
@@ -21,6 +38,7 @@ var Warning = getWarningLogger()
 var Info = getInfoLogger()
 var Debug = getDebugLogger()
 
+//SetLevel sets the level of logging information written as output.
 func SetLevel(level LogLevel) {
 	Error = getErrorLogger()
 	Warning = getWarningLogger()

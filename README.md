@@ -13,15 +13,15 @@ sets the level of logging information written as output.
 
 There are four possible values for argument `level` of type `LogLevel` in ascending info order:
 
-> 1. `LEVEL_ERROR`: Only Error logs are written to `stderr`. 
+> 1. `LEVEL_ERROR`: Only Error logs are written to `stderr`.
 > 2. `LEVEL_WARNING`: Warnings and errors are written to `stderr`.
-> 3. `LEVEL_INFO`:    Errors and warnings are written to `stderr`, infos to `stdout`. 
+> 3. `LEVEL_INFO`:    Errors and warnings are written to `stderr`, infos to `stdout`.
 > 4. `LEVEL_DEBUG`:   Errors and warnings are written to `stderr`, infos and debugs to `stdout`.
 
 To print logging information you can choose one of the following `*log.Logger` variables chaining to common I/O writers:
 
 ```go
-Error 
+Error
 Warning
 Info
 Debug
@@ -82,3 +82,7 @@ To run the example:
 ```go
 go run example/main.go
 ```
+
+## License
+
+[Apache License 2.0](LICENSE)

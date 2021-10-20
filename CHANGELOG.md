@@ -1,5 +1,12 @@
 # Changelog
 
+## [v1.2.1] - 2021-10-20
+
+### Changed:
+
+- Improved documentation
+- Added license to the repository
+
 ## [v1.2.0] - 2021-10-05
 
 ### New:

@@ -197,3 +197,11 @@ func TestDebugLevel(t *testing.T) {
 		}
 	})
 }
+
+func ExampleSetLevel() {
+	logger.SetLevel(logger.LEVEL_DEBUG)
+	logger.Error.Printf("error")
+	logger.Warning.Printf("warning")
+	logger.Debug.Printf("debug")
+	logger.Info.Printf("info")
+}
